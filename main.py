@@ -33,7 +33,7 @@ constructions = [
     SyntacticConstruction(2, 'match/case', 'Выбор выполнения с несколькими вариантами', 2),
     SyntacticConstruction(3, 'switch/case', 'Выбор выполнения с несколькими вариантами', 3),
     SyntacticConstruction(4, 'for', 'Повторение операций', 1),
-    SyntacticConstruction(5, 'begin...end', 'Повторение операций' , 4),
+    SyntacticConstruction(5, 'begin...end', 'Повторение операций', 4),
 ]
 
 languages_constructions = [
@@ -59,6 +59,7 @@ def res1(languages, constructions):
             res[l.name] = tmp
     return res
 
+
 def res2(languages, constructions):
     res = dict()
     for l in languages:
@@ -66,26 +67,24 @@ def res2(languages, constructions):
         sum = 0
         for c in constructions:
             if c.PL_id == l.id:
-                count+=1
-                sum+= len(c.description)
-        res[l.name] =round(sum/count,2)
+                count += 1
+                sum += len(c.description)
+        res[l.name] = round(sum / count, 2)
         sorted(res.items())
     return res
 
 
-
-def res3(languages, constructions,languages_constructions):
+def res3(languages, constructions, languages_constructions):
     res = []
     for c in constructions:
-        #if c.name[0] == "i": условие убрал, потому что не было повторяющихся первых букв в словах
+        # if c.name[0] == "i": условие убрал, потому что не было повторяющихся первых букв в словах
         for lc in languages_constructions:
             if lc.SC_id == c.id:
-                res.append((languages[lc.PL_id-1].name,c.name))
+                res.append((languages[lc.PL_id - 1].name, c.name))
     return res
 
 
 if __name__ == '__main__':
-    print(res1(languages,constructions))
-    print(res2(languages,constructions))
-    print(res3(languages,constructions,languages_constructions))
-
+    print(res1(languages, constructions))
+    print(res2(languages, constructions))
+    print(res3(languages, constructions, languages_constructions))
