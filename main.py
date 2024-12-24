@@ -1,3 +1,6 @@
+import unittest
+
+
 class ProgrammingLanguage:  # язык программирования
 
     def __init__(self, id, name):
@@ -84,7 +87,78 @@ def res3(languages, constructions, languages_constructions):
     return res
 
 
+class ClassTest(unittest.TestCase):
+    def test_first(self):
+        test_list_1 = [
+            ProgrammingLanguage(1, 'C++'),
+            ProgrammingLanguage(2, 'Python'),
+            ProgrammingLanguage(3, 'C#'),
+            ProgrammingLanguage(4, 'Pascal'),
+        ]
+
+        test_list_2 = [
+            SyntacticConstruction(1, 'if', 'Выбор выполнения', 1),
+            SyntacticConstruction(2, 'match/case', 'Выбор выполнения с несколькими вариантами', 2),
+            SyntacticConstruction(3, 'switch/case', 'Выбор выполнения с несколькими вариантами', 3),
+            SyntacticConstruction(4, 'for', 'Повторение операций', 1),
+            SyntacticConstruction(5, 'begin...end', 'Повторение операций', 4),
+        ]
+        result = res1(test_list_1, test_list_2)
+        expected = {'C++': ['if', 'for'], 'C#': ['switch/case']}
+        print(result)
+        self.assertEqual(result, expected)
+
+    def test_second(self):
+        test_list_1 = [
+            ProgrammingLanguage(1, 'C++'),
+            ProgrammingLanguage(2, 'Python'),
+            ProgrammingLanguage(3, 'C#'),
+            ProgrammingLanguage(4, 'Pascal'),
+        ]
+
+        test_list_2 = [
+            SyntacticConstruction(1, 'if', 'Выбор выполнения', 1),
+            SyntacticConstruction(2, 'match/case', 'Выбор выполнения с несколькими вариантами', 2),
+            SyntacticConstruction(3, 'switch/case', 'Выбор выполнения с несколькими вариантами', 3),
+            SyntacticConstruction(4, 'for', 'Повторение операций', 1),
+            SyntacticConstruction(5, 'begin...end', 'Повторение операций', 4),
+        ]
+
+        result = res2(test_list_1, test_list_2)
+        expected = {'C++': 17.5, 'Python': 41.0, 'C#': 41.0, 'Pascal': 19.0}
+        print(result)
+        self.assertEqual(result, expected)
+
+    def test_third(self):
+        test_list_1 = [
+            ProgrammingLanguage(1, 'C++'),
+            ProgrammingLanguage(2, 'Python'),
+            ProgrammingLanguage(3, 'C#'),
+            ProgrammingLanguage(4, 'Pascal'),
+        ]
+
+        test_list_2 = [
+            SyntacticConstruction(1, 'if', 'Выбор выполнения', 1),
+            SyntacticConstruction(2, 'match/case', 'Выбор выполнения с несколькими вариантами', 2),
+            SyntacticConstruction(3, 'switch/case', 'Выбор выполнения с несколькими вариантами', 3),
+            SyntacticConstruction(4, 'for', 'Повторение операций', 1),
+            SyntacticConstruction(5, 'begin...end', 'Повторение операций', 4),
+        ]
+        test_list_3 = [
+            ProgrammingLanguageToSyntacticConstruction(1, 1),
+            ProgrammingLanguageToSyntacticConstruction(1, 4),
+            ProgrammingLanguageToSyntacticConstruction(2, 2),
+            ProgrammingLanguageToSyntacticConstruction(3, 1),
+            ProgrammingLanguageToSyntacticConstruction(3, 4),
+            ProgrammingLanguageToSyntacticConstruction(1, 3),
+            ProgrammingLanguageToSyntacticConstruction(3, 3),
+            ProgrammingLanguageToSyntacticConstruction(4, 5),
+        ]
+        result = res3(test_list_1,test_list_2,test_list_3)
+        expected = [('C++', 'if'), ('C#', 'if'), ('Python', 'match/case'), ('C++', 'switch/case'), ('C#', 'switch/case'), ('C++', 'for'), ('C#', 'for'), ('Pascal', 'begin...end')]
+        print(result)
+        self.assertEqual(result, expected)
+
+
 if __name__ == '__main__':
-    print(res1(languages, constructions))
-    print(res2(languages, constructions))
-    print(res3(languages, constructions, languages_constructions))
+    unittest.main()
