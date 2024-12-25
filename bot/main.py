@@ -13,7 +13,7 @@ start_keyboard = [['/words', '/pictures'],
 start_markup = ReplyKeyboardMarkup(start_keyboard, one_time_keyboard=True)
 logger = logging.getLogger(__name__)
 
-TOKEN = '5370722364:AAHiDt3uZT1QXYwK56NrGMYjbF1qf8Wgtuc'
+TOKEN = ''
 
 connect_users = sqlite3.connect("words.db", check_same_thread=False)
 cursor_users = connect_users.cursor()
