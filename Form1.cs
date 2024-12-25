@@ -25,7 +25,7 @@ namespace Lab4
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                openFileDialog1.InitialDirectory = "C:\\Users\\Alex4\\Downloads\\IU5_Labs_C#\\IU5_Labs_C#\\Lab4\\Lab4\\bin\\Debug\\TXT_Files\\";
+                openFileDialog1.InitialDirectory = "C:\\Users\\Alex4\\RiderProj\\Lab4\\bin\\Debug\\TXT_Files\\";
                 openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                 //txbx_AudioName.Text = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); //без расширения файла
                 textBox1.Text = Path.GetFileName(openFileDialog1.FileName);  //с расширением
